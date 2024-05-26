@@ -2,7 +2,7 @@
 
 #### Author - James Connolly
 #### Student_Number - G00232918
-#### Module - Data Representation
+#### Module - Web Application Development
 
 ### Problem statement
 For this assignment, you must create a business e-commerce website that employs
