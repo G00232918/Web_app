@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--Example code from lectures -->
+    <head>
+        <style>
+            /* CSS style for centering content */
+            .centerContent
+            {
+                /* display will show how the content is shown */
+                display:flex;
+                /* Align the items centrally */
+                align-items: center;
+                /* Fllx into column format */
+                flex-direction:column;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Product details set as the album name pulling in the details retrieved from get in shop.ejs-->
+        <h1 id="product">Album Name: <%= myMessage %></h1>
+        <!--Getting the artist name -->
+        <h2>Artist: <%= model %></h2>
+        <!-- Price information -->
+        <h2 id="price"><%= myPrice %></h2>
+        <!-- Image associated to the product id-->
+        <img src="ImgStore/<%=myImages%>" width="100px">
+        <br>
+        <!-- Dropdown for the quantity to be selected-->
+        <select id="quantity" name="quantity">
+           <option value="0">0</option>
+           <option value="1" selected>1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+        </select>
+        <br>
+        <!--Button to add the details to the cart-->
+        <button onclick="addToCart()">Add to Cart</button>
+        <br>
+        <!-- Link to redirect the user back to the store -->
+        <a class="btn btn-danger" href="/store" role="button">Back to store</a>
+    </body>
+
+</html>
+
+<script>
+    // Function to add product to the cart
+    function addToCart()
+    {
+        // Getting the product, quantity and price from information in the body
+        let product = document.getElementById("product").innerHTML;
+        let quantity = document.getElementById("quantity").value;
+        let price = document.getElementById("price").innerHTML;
+        let quan_price ={p:price, quan:quantity};
+        // setting the product details in local storage.
+        localStorage.setItem(product, JSON.stringify(quan_price));
+    }
+</script>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Style based on the CCS reference - 
+  https://www.w3schools.com/howto/howto_css_checkout_form.asp-->
+<!-- Found the javascript variable reference for danger -
+   https://getbootstrap.com/docs/5.0/utilities/colors/-->
+
+<style>
+    /* Styles for the container element */
+  .container {
+    /* Max width set to 600 picxels */
+    max-width: 600px;
+    /* Takes the auto margin based on sie of element */
+    margin: 0 auto;
+    /* Padding set to 20 pixels */
+    padding: 20px;
+    /* Backgroud colour set */
+    background-color: #fff;
+    /* Border radius set to 5px */
+    border-radius: 5px;
+  }
+
+  /* Styles for the h1 and h2 headings */
+  h1,
+  h2 {
+    color: #dc3545;
+  }
+  
+  /* Styles for the form element */
+  /* Margin top set to 20 pixels */
+  form {
+    margin-top: 20px;
+  }
+  
+  /* Styles for the label element */
+  label {
+    /* Display as a block like a paragraph*/
+    display: block;
+    /* Margin top set to 10 pixels */
+    margin-top: 10px;
+    /* Font set to bold */
+    font-weight: bold;
+    /* Colour the same as danger in bootstrap */
+    color: #dc3545;  
+}
+  /* Styles for input, textarea, and select elements */
+  input,
+  textarea,
+  select {
+    /* width set to 100 percent */
+    width: 100%;
+    /* Padding set to 10 pixels */
+    padding: 10px;
+    /* Margin top set to  pixels */
+    margin-top: 5px;
+    /* Border 1px as danger in bootsrap */
+    border: 1px solid #dc3545; 
+    /* Border radius to 5 pixels */
+    border-radius: 5px;
+  }
+  
+  /* Styles for the button element */
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #dc3545; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Styles for the anchor (link) element */
+  a {
+    display: block;
+    margin-top: 10px;
+    color: #dc3545; 
+    text-decoration: none;
+  }
+  
+</style>
+
+
+<body>
+  <!-- Bootstrap class to create a responsive, fixed-width container.-->
+  <div class="container">
+    <!-- Header-->
+    <h1>Checkout</h1>
+    <!-- Header 2 for the cart item and final price-->
+    <h2 id="cart_items"></h2>
+    <h2 id="final_price"></h2>
+    <!-- Class for the form-->
+    <form>
+      <!-- Label for Name -->
+      <label for="name">Name:</label>
+      <!-- Input set to text with the id and name set to name which are required which means it has to be entered.-->
+      <input type="text" id="name" name="name" required>
+      <!-- Label for email -->
+      <label for="email">Email:</label>
+      <!-- Input set to text with the id and name set to email which are required which means it has to be entered.-->
+      <input type="email" id="email" name="email" required>
+      <!-- Label for Name -->
+      <label for="address">Address:</label>
+      <!-- Input set to text with the id and name set to name which are required which means it has to be entered.-->
+      <textarea type="text" id="address" name="address" required></textarea>
+      <!-- Label for payment method -->
+      <label for="payment">Payment Method:</label>
+      <!-- Dropdown menu for selecting payment method-->
+      <select id="address" name="payment">
+        <!--Option for credit card payment -->
+        <option value="credit-card">Credit Card</option>
+        <!--Option for paypal method -->
+        <option value="paypal">Paypal</option>
+        <!-- Option for stripe payment -->
+        <option value="stripe">Stripe</option>
+      </select>
+      <!--A submit button to purchase order-->
+      <a class="btn btn-danger" onclick="login()" href="/purchased" role="button">Purchase</a>
+
+      <!-- Sets the button to show as black, when submit is hit the user is logged in-->
+      <!-- Option for customer to go back to the store-->
+      <a href="store">Back to store</a>
+    </form>
+  </div>
+</body>
+
+
+<script>
+  let cost_allItems=0;
+  // Used to iterate through local storage
+  for(i=0; i < localStorage.length; i++)
+  {
+    // Get the product key from local storage
+    let product = localStorage.key(i);
+    // Retrieve the quantity and price of the product
+    let content = JSON.parse(localStorage.getItem(product));
+    // Calculate the total cost for the product
+    let total_cost = content.quan * content.p;
+    // Ad the total cost to the overall cost of all items selected
+    cost_allItems += total_cost;
+    // Check of the quantity  of the product is greater than 0
+    if (content.quan > 0)
+    {
+      // Display the product, quantity and total cost in the cart_items element associated in the form
+      document.getElementById("cart_items").innerHTML += product + " x " + content.quan + " = " + total_cost + "<br>";
+    }
+    // Display the final price in the element associated in the form
+    document.getElementById("final_price").innerHTML = cost_allItems;
+  }
+</script>
+
+
+<script>
+  function login() {
+    // Perform login logic or any necessary actions
+    // ...
+    
+    // Redirect the user to the /purchased page after login
+    window.location.href = "/purchased";
+  }
+</script>
+
+</html>

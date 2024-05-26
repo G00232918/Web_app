@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- This  calls the header ejs file with the configuraton-->
+    <%- include('header.ejs'); -%>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+    
+  <body>
+
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <!-- Active sets this image as the first image to be seen-->
+      <div class="carousel-item active">
+        <!--Image shown and the class is how the image cover page and adjusts to devices.
+        Alt is the name shown if the image does not load-->
+        <img src="Deuce.PNG" class="img-fluid d-block w-100" alt="Rory">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="LiveAndDang.PNG" class="img-fluid d-block w-100" alt="Thin D">
+      </div>
+      <div class="carousel-item">
+        <img src="SkintyFia.PNG"  class="img-fluid d-block w-100" alt="Font S">
+      </div>
+    </div>
+  
+    <!-- Left and right controls/icons -->
+    <!--Button allows to go back to previous image and the target is the call the carousel id.
+    The slide is for the image to slide back-->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <!--Button allows to go back to next image and the target is the call the carousel id.
+    The slide is for the image to slide to next image-->
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Indicators/dots -->
+  <!--Class for the dots seen on the middle of the image-->
+  <div class="carousel-indicators">
+    <!--They are buttons and they slide with the numbers referring to the images, 
+    eg. 0 being Rory etc.-->
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+
+  <script>
+    // Code based off the following - https://stackoverflow.com/questions/12582388/
+    // and https://stackoverflow.com/questions/74802593/how-to-append-active-class-on-first-div-using-loop-in-reactjs
+    // Unsure of some parts of this code
+    // random-element-from-an-array-of-images-and-their-respective-links-on-page-refresh
+    
+    // pulling in the query from jquery source
+    $(document).ready(function() {
+      var images = [
+        { index: 1, src: "Deuce.PNG" },
+        { index: 2, src: "LiveAndDang.PNG" },
+        { index: 3, src: "SkintyFia.PNG" },
+      ];
+
+  // Shuffle the images array using Fisher-Yates algorithm
+  // Example code from https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
+  // Unsure of the workings of the code but it swaps around the images
+  for (var i = images.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = images[i];
+    images[i] = images[j];
+    images[j] = temp;
+  }
+  // this is ensure that the new image is not appended to the existing ones 
+  $('.carousel-inner').empty();
+
+  // Unsure of some of the workings, it was worked on through trial and error
+  // setting to 0 to intialise a variable,  continues the loop
+  for (var i = 0; i < images.length; i++) {
+    // assign the value and retrieves the image
+    var image = images[i];
+    // assigns active and finds the image which should have active class
+    var activeClass = (i === 0) ? "active" : "";
+    // setting the variable details for carousel item id based in the carousel 
+    var carouselItem = $('<div class="carousel-item ' + activeClass + '">' +
+      '<img src="' + image.src + '" class="d-block w-100" alt="Slide">' +
+      '</div>');
+
+    // Store the image index as a data attribute on the carousel item
+    carouselItem.attr('data-index', image.index);
+    // Adds the image to be shown
+    $('.carousel-inner').append(carouselItem);
+  }
+  // calls the carousel to load
+  $('.carousel').carousel();
+});
+
+  </script>
+</body>
+
+
+
+<!--Footer-->
+<footer class="footer">
+  <!--Call to bring in the footer view config-->
+    <%- include('footer.ejs'); -%>
+</footer>
+</html>

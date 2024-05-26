@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Example code from https://getbootstrap.com/docs/4.0/components/modal/-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Button triggers -->
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal1">Gig News</button>
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal2">Announcements</button>
+
+  <!-- Modals -->
+  <!-- Modal class set-->
+  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+    <!--Defines the container-->
+    <div class="modal-dialog">
+      <!--Defines the content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Title of the modal-->
+          <h5 class="modal-title" id="modal1Label">Gig news</h5>
+          <!--The button to close the modal-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--Class for the body-->
+        <div class="modal-body">
+          <!-- Paragraph content-->
+          <p>Big news for all Galwegians. The SAW doctors are making their long awaited return and will be playing at the Galway
+            Arts Festival and their hometown of Tuam.
+          </p>
+        </div>
+        <!--Modal footer with the close button-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal2Label">Latest news and releases</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Lewis Calpaldi has finally released a second album and will be available to buy from the store soon. 
+            Ask in store as we may have heard more news regarding the release date.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

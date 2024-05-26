@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Exanple code from lecture notes-->
+    <!-- This  calls the header ejs file with the configuraton-->
+    <%- include('header'); -%>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!--Main Navigation-->
+  </head>
+  <body>
+    <!-- Bootstrap class to create a responsive, fixed-width container.-->
+    <div class="container">
+      <!--Header of the page-->
+        <h1>Welcome to the Vinyl shop</h1>
+        <!--Paragraph class for text-->
+        <p>Select the items you want to view or add to cart from the list below</p>
+        <!--Href is the link to the shop record pulled from the database query
+          in the index.js. Class is a Bootstrap list, when the item is selected,
+        it brings you to the date in link.-->
+        <a href="/shop?rec=1" class="list-group-item list-group-item-action">Deuce - Rory Gallagher</a>
+        <a href="/shop?rec=2" class="list-group-item list-group-item-action">Urban Hymns - The Verve</a>
+        <a href="/shop?rec=3" class="list-group-item list-group-item-action">Skinty Fia - Fontaines DC</a>
+        <a href="/shop?rec=4" class="list-group-item list-group-item-action">The Mary Wallopers - The Mary Wallopers</a>
+        <a href="/shop?rec=5" class="list-group-item list-group-item-action">The Wedding Above Glencree - Daoiri Farrell</a>
+        <a href="/shop?rec=6" class="list-group-item list-group-item-action">Gigis Recovery - The Murder Capital</a>
+        <a href="/shop?rec=7" class="list-group-item list-group-item-action">Delusions of Grandeur - Thumper</a>
+        <a href="/shop?rec=8" class="list-group-item list-group-item-action">Leave the Light On - Pillow Queens</a>
+        <a href="/shop?rec=9" class="list-group-item list-group-item-action">Unlimited Lovev - RHCP</a>
+        <a href="/shop?rec=10" class="list-group-item list-group-item-action">False Lankum - Lankum</a>
+        <a href="/shop?rec=11" class="list-group-item list-group-item-action">Smiling Like an Idiot - Sorcha Richardson</a>
+        <a href="/shop?rec=12" class="list-group-item list-group-item-action">Live and Dangerous Thin Lizzy</a>
+      <!--Break to allow a space between the list and button-->
+        <br>
+      <!--Red button that brings you to the Checkout page.-->
+      <a class="btn btn-danger" href="checkout.html" role="button">Checkout</a>
+      </div>
+  <!--The body of the webpage closing.-->    
+  </body>
+  <!--Query to bring in the config from the footer view-->
+  <footer>
+    <%- include('footer'); -%>
+  </footer>
+  </html>
